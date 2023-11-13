@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import classes from './Estilos.module.css';
 
 
 function Formulario(){
@@ -24,26 +25,26 @@ function Formulario(){
                 setMensajeError("");
             
             } else {
-                setMensajeError("El maximo de caracteres para el Nombre son 10");
+                setMensajeError("El máximo de caracteres para el Nombre son 10");
                 
             }
 
             if(ApeUser.length<=20){
                 setMensajeError2("");
             }else{
-                setMensajeError2("El maximo de caracteres para el Apellido son 20");
+                setMensajeError2("El máximo de caracteres para el Apellido son 20");
             }
 
             if(Email.length<=20 && Email.includes("@")){
                 setMensajeError3("");
             }else{
-                setMensajeError3("El maximo de caracteres para el email son 20 y tiene que incluir @");
+                setMensajeError3("El máximo de caracteres para el email son 20 y tiene que incluir @");
             }
 
             if(Mensaje.length<=500){
                 setMensajeError4("");
             }else{
-                setMensajeError4("El maximo de caracteres para el mensaje son 500");
+                setMensajeError4("El máximo de caracteres para el mensaje son 500");
             }
 
         },
@@ -89,14 +90,15 @@ function Formulario(){
                 condicion: Condiciones
             };
             console.log(usuario);
+            alert("Usuario creado")
         }
         
     }
-    
+
     return(
 
-        <form onSubmit={handleSubmit}>
-            <div class="form-example">
+        <form className={classes.form} onSubmit={handleSubmit}>
+            <div classname="Input">
                 <label for="name">Introduce el nombre de usuario: </label>
                 <input type="text" value={NomUser} id="name" onChange={handleInputChangeName} />
                 <p>{MensajeError}</p>
@@ -104,21 +106,21 @@ function Formulario(){
             <br/>
 
             <div class="form-example">
-                <label for="email">Introduce el apellido de usuario : </label>
+                <label for="email">Introduce el apellido de usuario: </label>
                 <input type="email" name={ApeUser} id="email" onChange={handleInputChangeApe} />
                 <p>{MensajeError2}</p>
             </div>
             <br/>
 
             <div class="form-example">
-                <label for="email">Introduce el email de usuario : </label>
+                <label for="email">Introduce el email de usuario: </label>
                 <input type="email" name={Email} id="email" onChange={handleInputChangeEmail} />
                 <p>{MensajeError3}</p>
             </div>
             <br/>
 
             <div>
-                <label for="sexo">Introduce el email de usuario : </label>
+                <label for="sexo">Introduce el sexo de usuario: </label>
                 <select name="sexo" value={Sexo} id="sexo" onChange={handleInputChangeSexo}>
                     <option value="Masculino">Masculino</option>
                     <option value="Femenino">Femenino</option>
@@ -129,14 +131,14 @@ function Formulario(){
             <br/>
 
             <div>
-                <label for="mensaje">mensaje : </label>
+                <label for="mensaje">Mensaje: </label>
                 <textarea name="mensaje" value={Mensaje} onChange={handleInputChangeMensaje} />
                 <p>{MensajeError4}</p>
             </div>
             <br/>
             
             <div>
-                <label for="aceptaTerminos">Acepto los términos y condiciones : </label>
+                <label for="aceptaTerminos">Acepto los términos y condiciones: </label>
                 <input type="checkbox" name="aceptaTerminos" onChange={handleInputChangeCondiciones} checked={Condiciones}  />
             
             </div>
